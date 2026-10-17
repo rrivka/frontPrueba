@@ -239,20 +239,27 @@ input[type="date"], input[type="time"] { color-scheme: light; }
 .sdot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; display: inline-block; box-shadow: inset 0 1px 1px rgba(255, 255, 255, .7), 0 0 0 3px rgba(255, 255, 255, .6); }
 .sdot--ok { background: #2ccf95; } .sdot--warn { background: #f2b24a; } .sdot--pink { background: #f06ba6; } .sdot--bad { background: #ef4f71; }
 
-/* ---------- Fichas circulares (fechas, conteos) ---------- */
-.dchip { --c: #6c5cff; --s: 58px; position: relative; width: var(--s); height: var(--s); border-radius: 50%; flex-shrink: 0; display: grid; place-content: center; text-align: center; z-index: 1;
-  background: repeating-conic-gradient(from 8deg, rgba(255, 255, 255, .95) 0 14deg, var(--c) 14deg 30deg);
-  box-shadow: 0 2px 0 color-mix(in srgb, var(--c) 60%, #000), 0 12px 22px -8px color-mix(in srgb, var(--c) 70%, transparent); }
-.dchip::before { content: ""; position: absolute; inset: 6px; border-radius: 50%; z-index: -1;
-  background: radial-gradient(circle at 35% 28%, color-mix(in srgb, var(--c) 55%, #fff), var(--c) 70%); box-shadow: inset 0 2px 3px rgba(255, 255, 255, .45), inset 0 -3px 6px rgba(0, 0, 0, .22), 0 0 0 1.5px rgba(255, 255, 255, .7); }
-.dchip b { font: 800 19px/1 var(--f); color: #fff; letter-spacing: -.03em; text-shadow: 0 1px 2px rgba(0, 0, 0, .2); }
-.dchip small { font: 700 9.5px/1.2 var(--f); text-transform: uppercase; letter-spacing: .08em; color: rgba(255, 255, 255, .9); }
-.dchip--white { --c: #2f3a45; background: repeating-conic-gradient(from 8deg, #ffffff 0 14deg, #d8dde6 14deg 30deg); box-shadow: 0 2px 0 #b9c0cc, 0 12px 22px -10px rgba(20, 30, 50, .45); }
-.dchip--white::before { background: radial-gradient(circle at 35% 28%, #4a5866, #1f2933 72%); }
+/* ---------- Burbujas de vidrio (fechas, conteos) — como la perla y las cápsulas del bloque 3D ---------- */
+.dchip { --c: #6c5cff; --s: 58px; position: relative; width: var(--s); height: var(--s); border-radius: 50%; flex-shrink: 0; display: grid; place-content: center; text-align: center; z-index: 1; color: #fff;
+  background: radial-gradient(circle at 50% 118%, color-mix(in srgb, var(--c) 35%, #fff) 0, transparent 55%), linear-gradient(180deg, color-mix(in srgb, var(--c) 72%, #fff) 0%, var(--c) 58%, color-mix(in srgb, var(--c) 82%, #000) 100%);
+  box-shadow: inset 0 -5px 10px color-mix(in srgb, var(--c) 60%, #000), inset 0 1px 1px rgba(255, 255, 255, .7), inset 0 0 0 1px rgba(255, 255, 255, .25), 0 12px 20px -8px color-mix(in srgb, var(--c) 75%, transparent); }
+/* destello alargado superior, como el reflejo de las cápsulas */
+.dchip::before { content: ""; position: absolute; left: 22%; right: 22%; top: 9%; height: 20%; border-radius: 999px; z-index: -1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .95), rgba(255, 255, 255, .15)); }
+.dchip::after { content: ""; position: absolute; right: 18%; bottom: 16%; width: 14%; height: 14%; border-radius: 50%; z-index: -1; background: rgba(255, 255, 255, .35); filter: blur(1px); }
+.dchip b { position: relative; font: 800 19px/1 var(--f); letter-spacing: -.03em; text-shadow: 0 1px 2px rgba(0, 0, 0, .22); }
+.dchip small { position: relative; font: 700 9.5px/1.2 var(--f); text-transform: uppercase; letter-spacing: .08em; opacity: .92; }
+/* perla transparente (neutra): como la esfera blanca */
+.dchip--white { color: var(--ink);
+  background: radial-gradient(circle at 68% 78%, rgba(255, 255, 255, .8), rgba(255, 255, 255, 0) 38%), radial-gradient(circle at 50% 45%, rgba(255, 255, 255, .55), rgba(226, 230, 240, .8) 70%, rgba(196, 203, 218, .95));
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  box-shadow: inset 0 -6px 12px rgba(120, 132, 165, .3), inset 0 2px 3px #fff, inset 0 0 0 1px rgba(255, 255, 255, .8), 0 12px 20px -9px rgba(20, 30, 50, .4); }
+.dchip--white b, .dchip--white small { text-shadow: 0 1px 0 rgba(255, 255, 255, .8); }
+.dchip--white small { color: var(--ink-2); }
 .dchip--violet { --c: #6c5cff; } .dchip--mint { --c: #23b892; } .dchip--gold { --c: #e8962e; } .dchip--pink { --c: #e2508f; }
-.dchip.big { --s: 76px; } .dchip.big b { font-size: 26px; } .dchip.big::before { inset: 8px; }
-.dchip.sm { --s: 46px; } .dchip.sm b { font-size: 15px; } .dchip.sm::before { inset: 5px; }
-.dchip.xs { --s: 34px; } .dchip.xs b { font-size: 12px; } .dchip.xs::before { inset: 4px; }
+.dchip.big { --s: 76px; } .dchip.big b { font-size: 26px; }
+.dchip.sm { --s: 46px; } .dchip.sm b { font-size: 15px; }
+.dchip.xs { --s: 34px; } .dchip.xs b { font-size: 12px; }
 
 /* ---------- Avatares y carpetas de vidrio ---------- */
 .avatar { --s: 38px; width: var(--s); height: var(--s); border-radius: 50%; display: grid; place-items: center; flex-shrink: 0; font: 700 12px var(--f); color: #fff; text-shadow: 0 1px 2px rgba(0, 0, 0, .18);

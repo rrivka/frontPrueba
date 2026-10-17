@@ -262,8 +262,13 @@
 /* ---------- Línea de tiempo ---------- */
 .timeline { display: flex; flex-direction: column; gap: 10px; }
 .tl-it { display: flex; align-items: center; gap: 14px; }
-.tl-it .dchip b { font-size: 13px; }
-.tl-it .dchip small { font-size: 9px; letter-spacing: .02em; }
+/* En la agenda los horarios van en cápsula de vidrio: inicio – fin */
+.tl-it .dchip { width: 128px; height: 44px; border-radius: 999px; display: flex; align-items: center; justify-content: center; gap: 5px; }
+.tl-it .dchip::before { left: 14%; right: 14%; top: 10%; height: 26%; }
+.tl-it .dchip::after { display: none; }
+.tl-it .dchip b { font-size: 14px; }
+.tl-it .dchip small { font-size: 12px; font-weight: 600; letter-spacing: 0; text-transform: none; }
+.tl-it .dchip small::before { content: '– '; }
 .tl-it__body { flex: 1; min-width: 0; display: flex; align-items: center; gap: 14px; padding: 14px 18px; --r: 22px; flex-wrap: wrap; }
 .tl-it__body b { display: block; font-weight: 650; }
 .tl-it__body small { display: block; color: var(--ink-3); font-size: 12.5px; }
@@ -523,7 +528,7 @@ button.tile:hover { background: rgba(255, 255, 255, .8); }
   .map__row { grid-template-columns: 1fr; gap: 4px; }
   .map__row > .ic { display: none; }
   .tl-it { align-items: flex-start; }
-  .tl-it .dchip { --s: 50px; }
+  .tl-it .dchip { width: 112px; height: 40px; }
 
   .login { grid-template-columns: 1fr; padding: 12px; gap: 18px; }
   .login__stage { height: 340px; min-height: 0; border-radius: 32px; }
